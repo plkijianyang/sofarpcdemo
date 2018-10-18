@@ -4,6 +4,9 @@ import api.PayMessage;
 import com.alipay.sofa.rpc.config.ProviderConfig;
 import com.alipay.sofa.rpc.config.RegistryConfig;
 import com.alipay.sofa.rpc.config.ServerConfig;
+import com.alipay.sofa.rpc.ext.ExtensionClass;
+import com.alipay.sofa.rpc.ext.ExtensionLoaderFactory;
+import com.alipay.sofa.rpc.server.Server;
 
 /**
  * @Author:wjy
@@ -23,6 +26,7 @@ public class RpcStart {
 				.setProtocol("zookeeper");
 
 
+
 		ProviderConfig<PayMessage> providerConfig = new ProviderConfig<PayMessage>()
 				.setInterfaceId(PayMessage.class.getName())
 				.setRef(new PayServiceImpl())
@@ -30,6 +34,8 @@ public class RpcStart {
 				.setRegister(true)
 				.setRegistry(registryConfig)
 				.setServer(serverConfig);
+
+		//ExtensionClass<Server> extensionClass = ExtensionLoaderFactory.getExtensionLoader(Server.class).getExtensionClass(serverConfig.getProtocol());
 
 		//发布服务
 		providerConfig.export();
