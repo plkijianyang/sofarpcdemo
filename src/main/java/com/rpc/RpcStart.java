@@ -16,7 +16,7 @@ public class RpcStart {
 	public static void main(String[] args) {
 		ServerConfig serverConfig = new ServerConfig()
 				.setProtocol("bolt")
-				.setPort(12345)
+				.setPort(12200)
 				.setDaemon(false);
 
 		RegistryConfig registryConfig = new RegistryConfig()
